@@ -1,6 +1,7 @@
 # practice_android
+一応Lessonごとにブランチ切ってます。
 
-# Lesson1
+## Lesson1
 
 - レイアウトの種類
 ConstraintLayout
@@ -20,7 +21,7 @@ DataBindingUtil.setContentView
 
 - onClickのさせ方
 
-# Lesson2
+## Lesson2
 
 - enum
 whenの使い方
