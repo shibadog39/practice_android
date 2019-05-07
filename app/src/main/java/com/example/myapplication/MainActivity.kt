@@ -12,10 +12,10 @@ class MainActivity : AppCompatActivity() {
 
 
     //var→codeで変更するとき val→変更しない(ObservableFieldだと変えられる)
-    var numberText :String = "0"
-    val text1 :ObservableField<String> = ObservableField( "")
-    val text2 :ObservableField<String> = ObservableField( "")
-    val symbol :ObservableField<SymbolTypeEnum> = ObservableField()
+    var numberText: String = "0"
+    val text1: ObservableField<String> = ObservableField("")
+    val text2: ObservableField<String> = ObservableField("")
+    val symbol: ObservableField<SymbolTypeEnum> = ObservableField()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,26 +32,26 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun selectButton(number: Int){
+    fun selectButton(number: Int) {
         text1.set(text2.get())
-        if (text2.get()=="0"){
+        if (text2.get() == "0") {
             text2.set("")
         }
         text2.set(text2.get() + number)
     }
 
-    fun plusButton(){
+    fun plusButton() {
         numberText = text2.get().toString()
         symbol.set(SymbolTypeEnum.PLUS)
         text2.set("0")
     }
 
-    fun equalButton(){
-        if(text2.get() == null){
+    fun equalButton() {
+        if (text2.get() == null) {
             return
         }
 
-        if(symbol.get() == null){
+        if (symbol.get() == null) {
             return
         }
 
@@ -64,20 +64,21 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
-       // kotlinだとswitchではなくwhen
-        when(symbol.get()){
+        // kotlinだとswitchではなくwhen
+        when (symbol.get()) {
             SymbolTypeEnum.PLUS -> {
                 // !! nullが入るかのうせいがあるものにnull来ないよと証明する 強制アンラップ
-               val answer = text2.get()!!.toInt() + numberText.toInt()
+                val answer = text2.get()!!.toInt() + numberText.toInt()
                 text2.set(answer.toString())
             }
             SymbolTypeEnum.MINUS -> {
                 // !! nullが入るかのうせいがあるものにnull来ないよと証明する 強制アンラップ
                 val answer = text2.get()!!.toInt() - numberText.toInt()
                 text2.set(answer.toString())
-            }else ->{
-            text2.set("0")
-        }
+            }
+            else -> {
+                text2.set("0")
+            }
         }
 
 //        ↓のようにsetの中にwhenを含むこともできる
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    enum class SymbolTypeEnum(val code: String, val label: String, val symbol: String){
+    enum class SymbolTypeEnum(val code: String, val label: String, val symbol: String) {
         PLUS("0", "足し算", "+"),
         MINUS("1", "引き算", "-")
     }
