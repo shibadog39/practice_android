@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="@{view.text2, default=defaultだよ}"
+                android:text="@{null, default=12345}"
+                app:numberWithComma="@{view.text2}"
                 android:textSize="30sp" />
 
             <TextView
